@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LyraeDesc>
+    <Config>
+        <Float Name="EyePosX" Value="-6" />
+        <Vector Name="CameraPosition">
+            <Value X="1" Y="-2" Z="1" />
+        </Vector>
+        <Bool Name="EnableAdaptiveSampling" Value="0" />
+        <Bool Name="EnableSSAA" Value="0" />
+        <Int32 Name="SSAASamples" Value="3" />
+        <Bool Name="EnableShadow" Value="0" />
+        <Int32 Name="TargetWidth" Value="800" />
+        <Int32 Name="TargetHeight" Value="600" />
+
+        <Int32 Name="TraceDepth" Value="8" />
+
+        <Int32 Name="RenderThreads" Value="6" />
+        <Float Name="ProjPlaneHalfWidth" Value="4" />
+        <Float Name="ProjPlaneHalfHeight" Value="3" />
+        <Int32 Name="RenderThreads" Value="3" />
+        <Bool Name="EnablePostProcessing" Value="0" />
+        <Bool Name="EnablePhotonMapping" Value="0" />
+        <Bool Name="EnablePhotonIndirect" Value="0" />
+        <Bool Name="EnablePhotonCaustics" Value="1" />
+        <Bool Name="PhotonMappingDebugView" Value="0" />
+        <Float Name="PhotonCausticsRadius" Value="0.06" />
+        <Int32 Name="PhotonIndirectMaximumDepth" Value="4" />
+        <Float Name="PhotonAbsorptionProbability" Value="0.2" />
+        <Int32 Name="PhotonsIndirectPerLight" Value="5000" />
+        <Int32 Name="PhotonsCausticsPerLight" Value="2000000" />
+        <Float Name="PhotonIndirectEnhancer" Value="1500" />
+        <Float Name="PhotonCausticsEnhancer" Value="500" />
+        <Float Name="PhotonIndirectRadius" Value="5" />
+
+        <Bool Name="EnableSmoothTriangleMesh" Value="1" />
+
+        <Bool Name="EnableDirectedPhotons" Value="0" />
+        <Vector Name="PhotonDirectedP1" >
+            <Value X="-40" Y="-40" Z="-40" />
+        </Vector>
+        <Vector Name="PhotonDirectedP2" >
+            <Value X="40" Y="40" Z="40" />
+        </Vector>
+    </Config>
+    <Scene>
+        <Textures>
+            <Texture Name="simple" File="../Textures/wood.jpg"/>
+        </Textures>
+        <Materials>
+            <Material Name="lambertian">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Lambertian>
+                        <Color R="1" G="1" B="1" />
+                    </Lambertian>
+                </BSDF>
+            </Material>
+            <Material Name="simple" Texture="simple">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Lambertian>
+                        <Color R="1" G="1" B="1" />
+                    </Lambertian>
+                </BSDF>
+            </Material>
+
+            <Material Name="metal">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <SpecularReflection>
+                        <Color R="1" G="1" B="1" />
+                        <Fresnel Type="Special" Scale="1" />
+                    </SpecularReflection>
+                </BSDF>
+            </Material>
+
+            <Material Name="glass">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <SpecularReflection>
+                        <Color R="1" G="1" B="1" />
+                        <Fresnel Type="Dielectric" EtaI="1" EtaT="1.5" />
+                    </SpecularReflection>
+                    <SpecularTransmission EtaI="1" EtaT="1.5">
+                        <Color R="1" G="1" B="1" />
+                    </SpecularTransmission>
+                </BSDF>
+            </Material>
+        </Materials>
+
+        <Shapes>
+
+            <Box Material="simple">
+                <Position X="-15" Y="-15" Z="-1.05"></Position>
+                <Size X="30" Y="30" Z="30" />
+            </Box>
+
+            <TriangleMesh Material="glass" File="../Meshes/cups.3DS" Scale="0.001">
+            </TriangleMesh>
+        </Shapes>
+
+        <Lights>
+            <AreaLight Intensity="0.9">
+                <Position X="3" Y="-5" Z="6" />
+                <Size X="2" Y="2" Z="1" />
+                <Color R="1" G="1" B="1" />
+            </AreaLight>
+
+        </Lights>
+
+    </Scene>
+</LyraeDesc>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LyraeDefault>
+    <Config>
+        <!-- general -->
+        <Bool Name="Verbose" Value="1" />
+        <Float Name="PlaneDistance" Value="1000.0" />
+        <Int32 Name="TraceDepth" Value="6" />
+        <Int32 Name="TargetWidth" Value="800" />
+        <Int32 Name="TargetHeight" Value="600" />
+        <Bool Name="EnableOutputMetainfo" Value="true" />
+
+        <!-- camera -->
+        <Float Name="ProjPlaneHalfWidth" Value="8" />
+        <Float Name="ProjPlaneHalfHeight" Value="6" />
+        <Float Name="EyePosX" Value="-10" />
+        <Vector Name="CameraPosition">
+            <Value X="0" Y="0" Z="3" />
+        </Vector>
+        <Vector Name="TargetPosition">
+            <Value X="0" Y="0" Z="0" />
+        </Vector>
+        <Int32 Name="CameraType" Value="0" />
+        
+        <!-- rendering switches -->
+        <Bool Name="EnableAdaptiveSampling" Value="0" />
+        <Bool Name="EnableSSAA" Value="0" />
+        <Bool Name="EnableShadow" Value="1" />
+        <Bool Name="EnableSoftShadow" Value="0" />
+        <Bool Name="EnablePostProcessing" Value="0" />
+        <Bool Name="EnableIGI" Value="0" />
+        <Bool Name="EnablePhotonMapping" Value="0" />
+        <Bool Name="EnablePhotonCaustics" Value="0" />
+        <Bool Name="EnablePhotonIndirect" Value="0" />
+        <Bool Name="EnablePhotonVolumetric" Value="0" />
+        <Bool Name="EnableVolumetricLighting" Value="0" />
+        <Bool Name="EnableSmoothTriangleMesh" Value="1" />
+        
+        <!-- performance and quality -->
+        <Int32 Name="RenderTileSize" Value="32" />
+        <Int32 Name="RenderThreads" Value="1" />
+        <Int32 Name="SoftShadowSamples" Value="5" />
+        <Int32 Name="GlossyReflectionSamples" Value="8" />
+        <Int32 Name="IGISamples" Value="4" />
+        <Int32 Name="SSAASamples" Value="2" />
+        <Float Name="ImpSamples" Value="0.5" />
+        <Float Name="ImpScale" Value="2.0" />
+        
+        <!-- Depth of field -->
+        <Bool Name="DOPEnabled" Value="0" />
+        <Float Name="DOPFocalDistance" Value="3" />
+        <Float Name="DOPRange" Value="2" />
+        <Int32 Name="DOPSamples" Value="4" />
+        
+        <!-- IGI -->
+        <Float Name="IGIVirLightDist" Value="0.1" />
+        <Float Name="IGIVirLightIntensity" Value="0.004" />
+        <Float Name="IGIVirLightAlpha" Value="0" />
+        
+        <!-- photon mapping -->
+        <Int32 Name="PhotonsCausticsPerLight" Value="500000" />
+        <Int32 Name="PhotonsIndirectPerLight" Value="20000" />
+        <Float Name="PhotonAbsorptionProbability" Value="0.5" />
+        <Float Name="PhotonCausticsEnhancer" Value="600" />
+        <Float Name="PhotonIndirectEnhancer" Value="100" />
+        <Float Name="PhotonCausticsRadius" Value="0.05" />
+        <Float Name="PhotonIndirectRadius" Value="5.0" />
+        <Int32 Name="PhotonCausticsLookupMaximum" Value="1024" />
+        <Int32 Name="PhotonCausticsLookupMinimum" Value="8" />
+        <Int32 Name="PhotonIndirectLookupMaximum" Value="512" />
+        <Int32 Name="PhotonIndirectLookupMinimum" Value="16" />
+        <Int32 Name="PhotonIndirectMaximumDepth" Value="4" />
+        <Int32 Name="PhotonCausticsMaximumDepth" Value="4" />
+        <Bool Name="PhotonMappingDebugView" Value="0" />
+        <Float Name="PhotonMappingDebugRadius" Value="0.03" />
+        <Bool Name="EnableDirectedPhotons" Value="0" />
+        <Vector Name="PhotonDirectedP1" >
+            <Value X="0" Y="0" Z="0" />
+        </Vector>
+        <Vector Name="PhotonDirectedP2" >
+            <Value X="0" Y="0" Z="0" />
+        </Vector>
+        
+        <!-- volumetric lighting -->
+        <Float Name="VolumetricLightingEnhancer" Value="0.02" />
+        <Float Name="VolumetricLightingMaximumDistance" Value="100" />
+        <Float Name="VolumetricLightingSampleStep" Value="0.2" />
+        <Vector Name="VolumetricLightingP1">
+            <Value X="-25" Y="-25" Z="-25" />
+        </Vector>
+        <Vector Name="VolumetricLightingP2">
+            <Value X="25" Y="25" Z="25" />
+        </Vector>
+
+        <!-- ambient occlusion -->
+        <Bool Name="EnableAmbientOcclusion" Value="0" />
+        <Vector Name="AmbientOcclusionColor">
+            <Value X="1" Y="1" Z="1" />
+        </Vector>
+        <Float Name="AmbientOcclusionDistance" Value="10" />
+        <Float Name="AmbientOcclusionEnhancer" Value="0.1" />
+        <Int32 Name="AmbientOcclusionSamples" Value="64" />
+        
+    </Config>
+</LyraeDefault>

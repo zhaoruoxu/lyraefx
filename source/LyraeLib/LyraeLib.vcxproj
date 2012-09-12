@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C9DB492B-7613-4AFE-A885-DB823766E5AC}</ProjectGuid>
+    <RootNamespace>LyraeLib</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>lib3ds/; ../lib3ds/; ../TineyXml/; TinyXml/; ../; ../Core/; $(SolutionDir)/LyraeLib/Core/; DevIL/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>lib3ds/; TinyXml/; Core/; LyraeLib/DevIL/include; DevIL/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\AdaptiveSampler.cpp" />
+    <ClCompile Include="Core\BVH.cpp" />
+    <ClCompile Include="Core\Engine.cpp" />
+    <ClCompile Include="Core\Geometry.cpp" />
+    <ClCompile Include="Core\kdtree.c" />
+    <ClCompile Include="Core\LyraeAPI.cpp" />
+    <ClCompile Include="Core\Material.cpp" />
+    <ClCompile Include="Core\Parallel.cpp" />
+    <ClCompile Include="Core\PhotonMap.cpp" />
+    <ClCompile Include="Core\Random.cpp" />
+    <ClCompile Include="Core\Scene.cpp" />
+    <ClCompile Include="Core\Shading.cpp" />
+    <ClCompile Include="Core\Shape.cpp" />
+    <ClCompile Include="Core\Task.cpp" />
+    <ClCompile Include="Core\Texture.cpp" />
+    <ClCompile Include="Core\XmlParse.cpp" />
+    <ClCompile Include="lib3ds\lib3ds_atmosphere.c" />
+    <ClCompile Include="lib3ds\lib3ds_background.c" />
+    <ClCompile Include="lib3ds\lib3ds_camera.c" />
+    <ClCompile Include="lib3ds\lib3ds_chunk.c" />
+    <ClCompile Include="lib3ds\lib3ds_chunktable.c" />
+    <ClCompile Include="lib3ds\lib3ds_file.c" />
+    <ClCompile Include="lib3ds\lib3ds_io.c" />
+    <ClCompile Include="lib3ds\lib3ds_light.c" />
+    <ClCompile Include="lib3ds\lib3ds_material.c" />
+    <ClCompile Include="lib3ds\lib3ds_math.c" />
+    <ClCompile Include="lib3ds\lib3ds_matrix.c" />
+    <ClCompile Include="lib3ds\lib3ds_mesh.c" />
+    <ClCompile Include="lib3ds\lib3ds_node.c" />
+    <ClCompile Include="lib3ds\lib3ds_quat.c" />
+    <ClCompile Include="lib3ds\lib3ds_shadow.c" />
+    <ClCompile Include="lib3ds\lib3ds_track.c" />
+    <ClCompile Include="lib3ds\lib3ds_util.c" />
+    <ClCompile Include="lib3ds\lib3ds_vector.c" />
+    <ClCompile Include="lib3ds\lib3ds_viewport.c" />
+    <ClCompile Include="Light\SpotLight.cpp" />
+    <ClCompile Include="Shape\Box.cpp" />
+    <ClCompile Include="Shape\Cylinder.cpp" />
+    <ClCompile Include="Shape\Plane.cpp" />
+    <ClCompile Include="Shape\Sphere.cpp" />
+    <ClCompile Include="Config\EngineConfig.cpp" />
+    <ClCompile Include="PostProcessor\BlurPostProcessor.cpp" />
+    <ClCompile Include="PostProcessor\HDRPostProcessor.cpp" />
+    <ClCompile Include="PostProcessor\ScaleBlur.cpp" />
+    <ClCompile Include="PostProcessor\ToneMapping.cpp" />
+    <ClCompile Include="Shape\TCylinder.cpp" />
+    <ClCompile Include="Shape\TriangleMesh.cpp" />
+    <ClCompile Include="TinyXml\tinystr.cpp" />
+    <ClCompile Include="TinyXml\tinyxml.cpp" />
+    <ClCompile Include="TinyXml\tinyxmlerror.cpp" />
+    <ClCompile Include="TinyXml\tinyxmlparser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\AdaptiveSampler.h" />
+    <ClInclude Include="Core\BVH.h" />
+    <ClInclude Include="Core\Config.h" />
+    <ClInclude Include="Core\Engine.h" />
+    <ClInclude Include="Core\Error.h" />
+    <ClInclude Include="Core\Geometry.h" />
+    <ClInclude Include="Core\kdtree.h" />
+    <ClInclude Include="Core\Light.h" />
+    <ClInclude Include="Core\LyraeAPI.h" />
+    <ClInclude Include="Core\LyraeFX.h" />
+    <ClInclude Include="Core\Material.h" />
+    <ClInclude Include="Core\Parallel.h" />
+    <ClInclude Include="Core\PhotonMap.h" />
+    <ClInclude Include="Core\PostProcessor.h" />
+    <ClInclude Include="Core\Random.h" />
+    <ClInclude Include="Core\RenderTarget.h" />
+    <ClInclude Include="Core\Scene.h" />
+    <ClInclude Include="Core\Shading.h" />
+    <ClInclude Include="Core\Shape.h" />
+    <ClInclude Include="Core\Task.h" />
+    <ClInclude Include="Core\Texture.h" />
+    <ClInclude Include="Core\XmlParse.h" />
+    <ClInclude Include="lib3ds\lib3ds.h" />
+    <ClInclude Include="lib3ds\lib3ds_impl.h" />
+    <ClInclude Include="Light\SpotLight.h" />
+    <ClInclude Include="Light\VirtualLight.h" />
+    <ClInclude Include="Shape\Box.h" />
+    <ClInclude Include="Shape\Cylinder.h" />
+    <ClInclude Include="Shape\Plane.h" />
+    <ClInclude Include="Shape\Sphere.h" />
+    <ClInclude Include="Config\EngineConfig.h" />
+    <ClInclude Include="Light\AreaLight.h" />
+    <ClInclude Include="Light\PointLight.h" />
+    <ClInclude Include="PostProcessor\BlurPostProcessor.h" />
+    <ClInclude Include="PostProcessor\HDRPostProcessor.h" />
+    <ClInclude Include="PostProcessor\ScaleBlur.h" />
+    <ClInclude Include="PostProcessor\ToneMapping.h" />
+    <ClInclude Include="DevIL\include\IL\config.h" />
+    <ClInclude Include="DevIL\include\IL\devil_internal_exports.h" />
+    <ClInclude Include="DevIL\include\IL\il.h" />
+    <ClInclude Include="DevIL\include\IL\il_wrap.h" />
+    <ClInclude Include="DevIL\include\IL\ilu.h" />
+    <ClInclude Include="DevIL\include\IL\ilu_region.h" />
+    <ClInclude Include="DevIL\include\IL\ilut.h" />
+    <ClInclude Include="DevIL\include\IL\ilut_config.h" />
+    <ClInclude Include="Shape\TCylinder.h" />
+    <ClInclude Include="Shape\TriangleMesh.h" />
+    <ClInclude Include="TinyXml\tinystr.h" />
+    <ClInclude Include="TinyXml\tinyxml.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DevIL\include\IL\config.h.win" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

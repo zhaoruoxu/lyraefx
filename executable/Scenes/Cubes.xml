@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LyraeDesc>
+    <Config>
+        <Float Name="EyePosX" Value="-6" />
+        <Vector Name="CameraPosition">
+            <Value X="0" Y="-3" Z="0.1" />
+        </Vector>
+        <Bool Name="EnableAdaptiveSampling" Value="1" />
+        <Bool Name="EnableSSAA" Value="0" />
+        <Int32 Name="SSAASamples" Value="3" />
+        <Bool Name="EnableShadow" Value="1" />
+        <Int32 Name="TargetWidth" Value="800" />
+        <Int32 Name="TargetHeight" Value="600" />
+
+        <Int32 Name="RenderThreads" Value="1" />
+        <Float Name="ProjPlaneHalfWidth" Value="6" />
+        <Float Name="ProjPlaneHalfHeight" Value="4.5" />
+        <Int32 Name="RenderThreads" Value="6" />
+        <Bool Name="EnablePostProcessing" Value="0" />
+        <Bool Name="EnablePhotonMapping" Value="0" />
+        <Bool Name="EnablePhotonIndirect" Value="1" />
+        <Bool Name="EnablePhotonCaustics" Value="1" />
+        <Bool Name="PhotonMappingDebugView" Value="0" />
+        <Float Name="PhotonCausticsRadius" Value="0.1" />
+        <Int32 Name="PhotonIndirectMaximumDepth" Value="4" />
+        <Float Name="PhotonAbsorptionProbability" Value="0.2" />
+        <Int32 Name="PhotonsIndirectPerLight" Value="5000" />
+        <Int32 Name="PhotonsCausticsPerLight" Value="200000" />
+        <Float Name="PhotonIndirectEnhancer" Value="3500" />
+        <Float Name="PhotonCausticsEnhancer" Value="2000" />
+        <Float Name="PhotonIndirectRadius" Value="7" />
+
+
+        <Bool Name="EnableSmoothTriangleMesh" Value="1" />
+
+        <Bool Name="EnableDirectedPhotons" Value="0" />
+        <Vector Name="PhotonDirectedP1" >
+            <Value X="-40" Y="-40" Z="-40" />
+        </Vector>
+        <Vector Name="PhotonDirectedP2" >
+            <Value X="40" Y="40" Z="40" />
+        </Vector>
+    </Config>
+    <Scene>
+        <Textures>
+            <Texture Name="simple" File="../Textures/c6.jpg"/>
+        </Textures>
+        <Materials>
+            <Material Name="lambertian">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Phong Diffuse="1" Specular="0" Ambient="0">
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="left">
+                <Color R="1" G="0" B="0" />
+                <BSDF>
+                    <Phong Diffuse="1" Specular="0" Ambient="0">
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="right">
+                <Color R="0" G="1" B="0" />
+                <BSDF>
+                    <Phong Diffuse="1" Specular="0" Ambient="0">
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="front">
+                <Color R="1" G="1" B="0" />
+                <BSDF>
+                    <Phong Diffuse="1" Specular="0" Ambient="0">
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="simple" Texture="simple">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Lambertian>
+                        <Color R="1" G="1" B="1" />
+                    </Lambertian>
+                </BSDF>
+            </Material>
+
+            <Material Name="metal">
+                <Color R="1" G="1" B="0.8" />
+                <BSDF>
+                    <!--
+                    <SpecularReflection>
+                        <Color R="1" G="1" B="1" />
+                        <Fresnel Type="Special" Scale="1" />
+                    </SpecularReflection>
+                    -->
+                    <Phong Diffuse="0.6" Specular="0.5" Ambient="0.3">
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+
+                </BSDF>
+            </Material>
+
+            <Material Name="glass">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <SpecularReflection>
+                        <Color R="1" G="1" B="1" />
+                        <Fresnel Type="Dielectric" EtaI="1" EtaT="1.5" />
+                    </SpecularReflection>
+                    <SpecularTransmission EtaI="1" EtaT="1.5">
+                        <Color R="1" G="1" B="1" />
+                    </SpecularTransmission>
+                </BSDF>
+            </Material>
+        </Materials>
+
+        <Shapes>
+
+            <Box Material="lambertian">
+                <Position X="-10" Y="-10" Z="-5"></Position>
+                <Size X="20" Y="20" Z="0.01" />
+            </Box>
+            <Box Material="lambertian">
+                <Position X="-10" Y="-10" Z="15"></Position>
+                <Size X="20" Y="20" Z="0.01" />
+            </Box>
+            <Box Material="right">
+                <Position X="-10" Y="-10" Z="-5"></Position>
+                <Size X="0.01" Y="20" Z="20" />
+            </Box>
+            <Box Material="left">
+                <Position X="10" Y="-10" Z="-5"></Position>
+                <Size X="0.01" Y="20" Z="20" />
+            </Box>
+            <Box Material="lambertian">
+                <Position X="-10" Y="-10" Z="-5"></Position>
+                <Size X="20" Y="0.01" Z="20" />
+            </Box>
+            <Box Material="front">
+                <Position X="-10" Y="10" Z="-5"></Position>
+                <Size X="20" Y="0.01" Z="20" />
+            </Box>
+
+            <TriangleMesh File="../Meshes/cubes.3DS" Material="lambertian" Scale="0.4">
+            </TriangleMesh>
+
+        </Shapes>
+
+        <Lights>
+            <SpotLight Intensity="0.8" A0="20" A1="30">
+                <Color R="1" G="1" B="1" />
+                <Position X="0" Y="0" Z="10"></Position>
+                <Dir X="0" Y="0" Z="-1"></Dir>
+            </SpotLight>
+            <PointLight Intensity="0.6">
+                <Color R="1" G="1" B="1" />
+                <Position X="9" Y="5" Z="5" ></Position>
+            </PointLight>
+        </Lights>
+
+    </Scene>
+</LyraeDesc>

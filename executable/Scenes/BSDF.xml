@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LyraeDesc>
+    <Config>
+        <Float Name="EyePosX" Value="-7" />
+        <Vector Name="CameraPosition">
+            <Value X="-2" Y="-2" Z="1" />
+        </Vector>
+        <Bool Name="EnableAdaptiveSampling" Value="0" />
+        <Bool Name="EnableSSAA" Value="0" />
+        <Int32 Name="SSAASamples" Value="3" />
+        <Bool Name="EnableSoftShadow" Value="0" />
+        <Int32 Name="SoftShadowSamples" Value="4" />
+        <Int32 Name="TargetWidth" Value="800" />
+        <Int32 Name="TargetHeight" Value="450" />
+        <Bool Name="EnableShadow" Value="0" />
+
+        <Int32 Name="RenderThreads" Value="6" />
+
+        <Float Name="ProjPlaneHalfWidth" Value="4" />
+        <Float Name="ProjPlaneHalfHeight" Value="2.25" />
+
+        <Bool Name="EnableSmoothTriangleMesh" Value="1" />
+        <Bool Name="EnablePostProcessing" Value="0" />
+        <Bool Name="EnablePhotonMapping" Value="0" />
+        <Bool Name="EnablePhotonIndirect" Value="1" />
+        <Bool Name="EnablePhotonCaustics" Value="1" />
+        <Bool Name="PhotonMappingDebugView" Value="0" />
+        <Float Name="PhotonCausticsRadius" Value="0.1" />
+        <Int32 Name="PhotonIndirectMaximumDepth" Value="4" />
+        <Float Name="PhotonAbsorptionProbability" Value="0.2" />
+        <Int32 Name="PhotonsIndirectPerLight" Value="10000" />
+        <Float Name="PhotonIndirectEnhancer" Value="500" />
+        <Float Name="PhotonCausticsEnhancer" Value="2000" />
+        <Float Name="PhotonIndirectRadius" Value="5" />
+
+        <Bool Name="EnableDirectedPhotons" Value="1" />
+        <Vector Name="PhotonDirectedP1" >
+            <Value X="-40" Y="-40" Z="-40" />
+        </Vector>
+        <Vector Name="PhotonDirectedP2" >
+            <Value X="40" Y="40" Z="40" />
+        </Vector>
+
+        <Bool Name="EnableVolumetricLighting" Value="0" />
+        <Float Name="VolumetricLightingEnhancer" Value="0.03" />
+        <Float Name="VolumetricLightingSampleStep" Value="0.1" />
+        <Float Name="VolumetricLightingMaximumDistance" Value="100" />
+        <Vector Name="VolumetricLightingP1">
+            <Value X="-100" Y="-100" Z="-100" />
+        </Vector>
+        <Vector Name="VolumetricLightingP2">
+            <Value X="100" Y="100" Z="100" />
+        </Vector>
+    </Config>
+    <Scene>
+        <Textures>
+            <Texture Name="simple" File="../Textures/simple.jpg" />
+        </Textures>
+        <Materials>
+            <Material Name="default" Diffuse="0.6" Ambient="0.05">
+                <Color R="1.0" G="1.0" B="1.0" />
+            </Material>
+            <Material Name="simple" Texture="simple">
+                <BSDF>
+                    <Phong Diffuse="1" Specular="0" Ambient="0.4" Exp="40">
+                        <DiffuseColor R="0.6" G="0.8" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="chess" Diffuse="1.2">
+                <Color R="1.0" G="0.8" B="0.6" />
+            </Material>
+            <Material Name="glass" Diffuse="0" Reflection="0" Specular="0.8" Refraction="0.9" RefractionIndex="1.5">
+                <Color R="0.6" G="0.8" B="1" />
+            </Material>
+            <Material Name="lambertian" Diffuse="0">
+                <BSDF>
+                    <Lambertian>
+                        <Color R="1" G="1" B="1" />
+                    </Lambertian>
+                </BSDF>
+            </Material>
+            <Material Name="phong" Diffuse="0">
+                <BSDF>
+                    <Phong Diffuse="0.5" Specular="0.5" Ambient="0.1" Exp="40">
+                        <DiffuseColor R="0.5" G="0.5" B="0.5" />
+                        <SpecularColor R="1" G="1" B="1" />
+                        <AmbientColor R="0" G="0.1" B="0" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="bsdf_glass" Diffuse="0">
+                <BSDF>
+                    <SpecularReflection>
+                        <Color R="1" G="1" B="1" />
+                        <Fresnel Type="Dielectric" EtaI="1" EtaT="1.5" />
+                    </SpecularReflection>
+                    <SpecularTransmission EtaI="1" EtaT="1.5">
+                        <Color R="1" G="1" B="1" />
+                    </SpecularTransmission>
+                </BSDF>
+            </Material>
+            <Material Name="bsdf_metal" Diffuse="0">
+                <BSDF>
+                    <SpecularReflection>
+                        <Color R="1" G="1" B="1" />
+                        <Fresnel Type="Conductor" Eta="1.5" K="3" />
+                    </SpecularReflection>
+                </BSDF>
+            </Material>
+        </Materials>
+
+        <Shapes>
+            <!--
+            <Box Material="default">
+                <Position X="-10" Y="-10" Z="-10"></Position>
+                <Size X="20" Y="20" Z="20" />
+            </Box>
+            <Sphere Material="bsdf" Radius="1.4" >
+                <Position X="0" Y="0" Z="0" />
+            </Sphere>
+            -->
+            <Box Material="simple">
+                <Position X="-10" Y="-10" Z="-2"></Position>
+                <Size X="20" Y="20" Z="20" />
+            </Box>
+            
+
+            
+            <TriangleMesh Material="bsdf_metal" File="../Meshes/chess.3DS" Scale="0.55">
+            </TriangleMesh>
+            <!--
+            <Box Material="glass">
+                <Position X="-4" Y="-4" Z="0"/>
+                <Size X="8" Y="8" Z="1" />
+            </Box>
+            -->
+        </Shapes>
+
+        <Lights>
+            <AreaLight Intensity="1.5">
+                <Position X="0" Y="-8" Z="10" />
+                <Size X="2" Y="2" Z="1" />
+                <Color R="1" G="1" B="1" />
+            </AreaLight>
+
+        </Lights>
+
+    </Scene>
+</LyraeDesc>

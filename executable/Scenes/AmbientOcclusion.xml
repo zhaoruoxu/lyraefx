@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LyraeDesc>
+    <Config>
+        <Float Name="EyePosX" Value="-6" />
+        <Vector Name="CameraPosition">
+            <Value X="0" Y="-2" Z="1" />
+        </Vector>
+        <Bool Name="EnableAdaptiveSampling" Value="0" />
+        <Bool Name="EnableSSAA" Value="0" />
+        <Int32 Name="SSAASamples" Value="3" />
+        <Bool Name="EnableShadow" Value="1" />
+        <Int32 Name="TargetWidth" Value="800" />
+        <Int32 Name="TargetHeight" Value="600" />
+
+        <Int32 Name="RenderThreads" Value="3" />
+        <Float Name="ProjPlaneHalfWidth" Value="4" />
+        <Float Name="ProjPlaneHalfHeight" Value="3" />
+        <Int32 Name="RenderThreads" Value="3" />
+        <Bool Name="EnablePostProcessing" Value="0" />
+        <Bool Name="EnablePhotonMapping" Value="0" />
+        <Bool Name="EnablePhotonIndirect" Value="1" />
+        <Bool Name="EnablePhotonCaustics" Value="1" />
+        <Bool Name="PhotonMappingDebugView" Value="0" />
+        <Float Name="PhotonCausticsRadius" Value="0.1" />
+        <Int32 Name="PhotonIndirectMaximumDepth" Value="4" />
+        <Float Name="PhotonAbsorptionProbability" Value="0.2" />
+        <Int32 Name="PhotonsIndirectPerLight" Value="5000" />
+        <Int32 Name="PhotonsCausticsPerLight" Value="200000" />
+        <Float Name="PhotonIndirectEnhancer" Value="1500" />
+        <Float Name="PhotonCausticsEnhancer" Value="2000" />
+        <Float Name="PhotonIndirectRadius" Value="5" />
+
+        <Bool Name="EnableSmoothTriangleMesh" Value="1" />
+
+        <Bool Name="EnableDirectedPhotons" Value="0" />
+        <Vector Name="PhotonDirectedP1" >
+            <Value X="-40" Y="-40" Z="-40" />
+        </Vector>
+        <Vector Name="PhotonDirectedP2" >
+            <Value X="40" Y="40" Z="40" />
+        </Vector>
+
+
+        <Bool Name="EnableAmbientOcclusion" Value="1" />
+        <Vector Name="AmbientOcclusionColor">
+            <Value X="1" Y="1" Z="1" />
+        </Vector>
+        <Float Name="AmbientOcclusionDistance" Value="5" />
+        <Float Name="AmbientOcclusionEnhancer" Value="0.7" />
+        <Int32 Name="AmbientOcclusionSamples" Value="32" />
+    </Config>
+    <Scene>
+        <Textures>
+            <Texture Name="simple" File="../Textures/simple0.jpg"/>
+            <Texture Name="m28" File="../Textures/M-28.jpg" />
+        </Textures>
+        <Materials>
+            <Material Name="lambertian">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Lambertian>
+                        <Color R="1" G="1" B="1" />
+                    </Lambertian>
+                </BSDF>
+            </Material>
+            <Material Name="lambertian_red">
+                <Color R="1" G="0.5" B="0.5" />
+                <BSDF>
+                    <Lambertian>
+                        <Color R="1" G="0" B="0" />
+                    </Lambertian>
+                </BSDF>
+            </Material>
+            <Material Name="lambertian_yellow">
+                <Color R="1" G="1" B="0.5" />
+                <BSDF>
+                    <Lambertian>
+                        <Color R="1" G="1" B="0" />
+                    </Lambertian>
+                </BSDF>
+            </Material>
+            <Material Name="lambertian_blue">
+                <Color R="0.5" G="0.5" B="1" />
+                <BSDF>
+                    <Lambertian>
+                        <Color R="0" G="0" B="1" />
+                    </Lambertian>
+                </BSDF>
+            </Material>
+            <Material Name="phong">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Phong Diffuse="0.9" Specular="0.5" Ambient="0.2" >
+                        <DiffuseColor R="0.6" G="0.6" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="sampling">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Phong Diffuse="0" Specular="0" Ambient="1" >
+                        <DiffuseColor R="0.6" G="0.6" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="simple" Texture="simple" UScale="1" VScale="1">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Lambertian>
+                        <Color R="1" G="1" B="1" />
+                    </Lambertian>
+                </BSDF>
+            </Material>
+
+            <Material Name="fresnel_special">
+                <Color R="0.8" G="1" B="1" />
+                <BSDF>
+                    <SpecularReflection>
+                        <Color R="1" G="1" B="1" />
+                        <Fresnel Type="Special" Scale="1" />
+                    </SpecularReflection>
+                </BSDF>
+            </Material>
+            <Material Name="glossy_reflection">
+                <Color R="0.8" G="1" B="1" />
+                <BSDF>
+                    <GlossyReflection Scale="0.3" Samples="32">
+                        <Color R="1" G="1" B="1" />
+                        <Fresnel Type="Special" Scale="1" />
+                    </GlossyReflection>
+                </BSDF>
+            </Material>
+
+            <Material Name="refract">
+                <Color R="0.8" G="1" B="1" />
+                <BSDF>
+                    <SpecularTransmission EtaI="1" EtaT="1.5">
+                        <Color R="1" G="1" B="1" />
+                    </SpecularTransmission>
+                </BSDF>
+            </Material>
+            <Material Name="heli" Texture="m28">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Phong Diffuse="1" Specular="0" Ambient="0">
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="glossy_refract">
+                <Color R="0.8" G="1" B="1" />
+                <BSDF>
+                    <GlossyTransmission Scale="0.15" Samples="32" EtaI="1" EtaT="1.5">
+                        <Color R="1" G="1" B="1" />
+                    </GlossyTransmission>
+                </BSDF>
+            </Material>
+
+            <Material Name="glass">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <SpecularReflection>
+                        <Color R="1" G="1" B="1" />
+                        <Fresnel Type="Dielectric" EtaI="1" EtaT="1.5" />
+                    </SpecularReflection>
+                    <SpecularTransmission EtaI="1" EtaT="1.5">
+                        <Color R="1" G="1" B="1" />
+                    </SpecularTransmission>
+                </BSDF>
+            </Material>
+
+
+        </Materials>
+
+        <Shapes>
+
+            <Box Material="simple">
+                <Position X="-10" Y="-10" Z="-1"></Position>
+                <Size X="20" Y="20" Z="20" />
+            </Box>
+
+            <Box Material="lambertian">
+                <Position X="-4" Y="-3" Z="-1" />
+                <Size X="2" Y="2" Z="2" />
+            </Box>
+            <Box Material="lambertian_red">
+                <Position X="2" Y="2" Z="-1" />
+                <Size X="2" Y="2" Z="4" />
+            </Box>
+
+            <Sphere Material="lambertian_yellow" Radius="2">
+                <Position X="-2" Y="2" Z="1" />
+            </Sphere>
+
+            <Cylinder Material="lambertian_blue" Radius="0.7" HalfHeight="1">
+                <Position X="3" Y="-2" Z="0" />
+            </Cylinder>
+            <!--
+            
+                        <TriangleMesh Material="heli" File="../Meshes/heli.3DS" Scale="0.5">
+            </TriangleMesh>
+            <Sphere Material="fresnel_special" Radius="1.5">
+                <Position X="2" Y="0" Z="0" />
+            </Sphere>
+                        <Sphere Material="c3" Radius="2">
+                <Position X="0" Y="0" Z="1" />
+            </Sphere>
+            <Sphere Material="glossy_reflection" Radius="1.5">
+                <Position X="-2" Y="0" Z="0" />
+            </Sphere>
+            <Sphere Material="refract" Radius="1.5">
+                <Position X="2" Y="0" Z="0" />
+            </Sphere>
+            <Sphere Material="glossy_refract" Radius="1.5">
+                <Position X="-2" Y="0" Z="0" />
+            </Sphere>
+
+
+
+            <TriangleMesh Material="glass" File="../Meshes/teapot.3DS" Scale="0.15">
+            </TriangleMesh>
+                        <Cylinder Material="phong" Radius="2" HalfHeight="1">
+                <Position X="0" Y="0" Z="0" />
+            </Cylinder>
+            -->
+
+
+        </Shapes>
+
+        <Lights>
+            <AreaLight Intensity="0">
+                <Position X="-1" Y="-4" Z="6" />
+                <Size X="2" Y="2" Z="1" />
+                <Color R="1" G="1" B="1" />
+            </AreaLight>
+
+            <!--
+
+            <SpotLight Intensity="1" A0="10" A1="15">
+                <Position X="0" Y="0" Z="10" />
+                <Dir X="0" Y="0" Z="-1" />
+                <Color R="1" G="1" B="1" />
+            </SpotLight>
+
+            <PointLight Intensity="0.5" Alpha="32">
+                <Position X="1" Y="-4" Z="7" />
+                <Color R="1" G="1" B="1" />
+            </PointLight>
+            <PointLight Intensity="0.5" Alpha="32">
+                <Position X="-2" Y="-4" Z="7" />
+                <Color R="1" G="1" B="1" />
+            </PointLight>
+            -->
+        </Lights>
+
+    </Scene>
+</LyraeDesc>

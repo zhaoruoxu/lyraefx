@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LyraeDesc>
+    <Config>
+        <Float Name="EyePosX" Value="-6" />
+        <Vector Name="CameraPosition">
+            <Value X="1" Y="-4" Z="-0.5" />
+        </Vector>
+        <Bool Name="EnableAdaptiveSampling" Value="0" />
+        <Bool Name="EnableSSAA" Value="0" />
+        <Int32 Name="SSAASamples" Value="3" />
+        <Bool Name="EnableShadow" Value="1" />
+        <Int32 Name="TargetWidth" Value="800" />
+        <Int32 Name="TargetHeight" Value="600" />
+
+        <Int32 Name="RenderThreads" Value="6" />
+        <Float Name="ProjPlaneHalfWidth" Value="4" />
+        <Float Name="ProjPlaneHalfHeight" Value="3" />
+        <Bool Name="EnablePostProcessing" Value="0" />
+        <Bool Name="EnablePhotonMapping" Value="0" />
+        <Bool Name="EnablePhotonIndirect" Value="1" />
+        <Bool Name="EnablePhotonCaustics" Value="1" />
+        <Bool Name="PhotonMappingDebugView" Value="0" />
+        <Float Name="PhotonCausticsRadius" Value="0.1" />
+        <Int32 Name="PhotonIndirectMaximumDepth" Value="4" />
+        <Float Name="PhotonAbsorptionProbability" Value="0.2" />
+        <Int32 Name="PhotonsIndirectPerLight" Value="5000" />
+        <Int32 Name="PhotonsCausticsPerLight" Value="200000" />
+        <Float Name="PhotonIndirectEnhancer" Value="1500" />
+        <Float Name="PhotonCausticsEnhancer" Value="2000" />
+        <Float Name="PhotonIndirectRadius" Value="5" />
+        <Bool Name="EnableShadow" Value="1" />
+
+        <Bool Name="DOPEnabled" Value="0" />
+        <Float Name="DOPFocalDistance" Value="0" />
+        <Float Name="DOPRange" Value="8" />
+        <Int32 Name="DOPSamples" Value="4" />
+        <Int32 Name="SoftShadowSamples" Value="4" />
+
+
+        <Bool Name="EnableSmoothTriangleMesh" Value="1" />
+
+        <Bool Name="EnableVolumetricLighting" Value="0" />
+        <Float Name="VolumetricLightingEnhancer" Value="0.06" />
+        <Float Name="VolumetricLightingMaximumDistance" Value="30" />
+        <Float Name="VolumetricLightingSampleStep" Value="0.1" />
+        <Vector Name="VolumetricLightingP1">
+            <Value X="-15" Y="-15" Z="-15" />
+        </Vector>
+        <Vector Name="VolumetricLightingP2">
+            <Value X="15" Y="15" Z="15" />
+        </Vector>
+    </Config>
+    <Scene>
+        <Textures>
+            <Texture Name="bg" File="../Textures/c1.jpg"/>
+            <Texture Name="grass" File="../Textures/grass.jpg"/>
+        </Textures>
+        <Materials>
+            <Material Name="lambertian">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Lambertian>
+                        <Color R="1" G="1" B="1" />
+                    </Lambertian>
+                </BSDF>
+            </Material>
+
+            <Material Name="tree">
+                <Color R="0.4" G="1" B="0.5" />
+                <BSDF>
+                    <Phong Diffuse="1" Specular="0" Ambient="0.1">
+                        <DiffuseColor R="0" G="0.3" B="0.1" />
+                        <AmbientColor R="0.3" G="0.2" B="0.1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="ground" Texture="grass" UScale="2" VScale="2">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Phong Diffuse="0.5" Specular="0" Ambient="0.2  ">
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="bg" Texture="bg"  >
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Phong Diffuse="0" Specular="0" Ambient="0.3" >
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+        </Materials>
+
+        <Shapes>
+
+            <Sphere Material="bg" Radius="40">
+                <Position X="0" Y="0" Z="0" />
+            </Sphere>
+
+
+            <Box Material="ground">
+                <Position X="-6" Y="-6" Z="-2.7"/>
+                <Size X="12" Y="12" Z="0.01" />
+            </Box>
+
+            <TriangleMesh Material="tree" File="../Meshes/tree.3DS" Scale="0.02" />
+
+        </Shapes>
+
+        <Lights>
+            <AreaLight Intensity="1">
+                <Position X="-5.6" Y="5" Z="4" />
+                <Size X="2" Y="2" Z="2" />
+                <Color R="1" G="0.8" B="0.5" />
+            </AreaLight>
+
+        </Lights>
+
+    </Scene>
+</LyraeDesc>

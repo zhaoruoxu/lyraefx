@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LyraeDesc>
+    <Config>
+        <Float Name="EyePosX" Value="-6" />
+        <Vector Name="CameraPosition">
+            <Value X="-0.8" Y="-1" Z="0.8" />
+        </Vector>
+        <Bool Name="EnableAdaptiveSampling" Value="1" />
+        <Bool Name="EnableSSAA" Value="0" />
+        <Int32 Name="SSAASamples" Value="3" />
+        <Bool Name="EnableSoftShadow" Value="0" />
+        <Int32 Name="SoftShadowSamples" Value="4" />
+        <Int32 Name="TargetWidth" Value="800" />
+        <Int32 Name="TargetHeight" Value="600" />
+
+        <Float Name="ProjPlaneHalfWidth" Value="4" />
+        <Float Name="ProjPlaneHalfHeight" Value="3" />
+        <Int32 Name="RenderThreads" Value="3" />
+        <Bool Name="EnableSmoothTriangleMesh" Value="1" />
+        <Bool Name="EnablePostProcessing" Value="0" />
+        <Bool Name="EnablePhotonMapping" Value="0" />
+        <Bool Name="EnablePhotonIndirect" Value="1" />
+        <Bool Name="EnablePhotonCaustics" Value="1" />
+        <Bool Name="PhotonMappingDebugView" Value="0" />
+        <Float Name="PhotonCausticsRadius" Value="0.1" />
+        <Int32 Name="PhotonIndirectMaximumDepth" Value="4" />
+        <Float Name="PhotonAbsorptionProbability" Value="0.2" />
+        <Int32 Name="PhotonsIndirectPerLight" Value="10000" />
+        <Float Name="PhotonIndirectEnhancer" Value="500" />
+        <Float Name="PhotonCausticsEnhancer" Value="2000" />
+        <Float Name="PhotonIndirectRadius" Value="5" />
+
+        <Bool Name="EnableDirectedPhotons" Value="1" />
+        <Vector Name="PhotonDirectedP1" >
+            <Value X="-40" Y="-40" Z="-40" />
+        </Vector>
+        <Vector Name="PhotonDirectedP2" >
+            <Value X="40" Y="40" Z="40" />
+        </Vector>
+
+        <Bool Name="DOPEnabled" Value="0" />
+        <Float Name="DOPFocalDistance" Value="-7" />
+        <Float Name="DOPRange" Value="1.5" />
+        <Int32 Name="DOPSamples" Value="4" />
+
+        <Bool Name="EnableVolumetricLighting" Value="0" />
+        <Float Name="VolumetricLightingEnhancer" Value="0.03" />
+        <Float Name="VolumetricLightingSampleStep" Value="0.1" />
+        <Float Name="VolumetricLightingMaximumDistance" Value="100" />
+        <Vector Name="VolumetricLightingP1">
+            <Value X="-100" Y="-100" Z="-100" />
+        </Vector>
+        <Vector Name="VolumetricLightingP2">
+            <Value X="100" Y="100" Z="100" />
+        </Vector>
+    </Config>
+    <Scene>
+        <Textures>
+            <Texture Name="simple" File="../Textures/simple.jpg" />
+            <Texture Name="m28" File="../Textures/M-28.jpg" />
+        </Textures>
+        <Materials>
+            <Material Name="phong">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Phong Diffuse="1" Specular="0" Ambient="0">
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="heli" Texture="m28">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Phong Diffuse="1" Specular="0" Ambient="0">
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+            <Material Name="simple" Texture="simple">
+                <Color R="1" G="1" B="1" />
+                <BSDF>
+                    <Phong Diffuse="1" Specular="0" Ambient="0">
+                        <DiffuseColor R="1" G="1" B="1" />
+                    </Phong>
+                </BSDF>
+            </Material>
+        </Materials>
+
+        <Shapes>
+
+            <Box Material="phong">
+                <Position X="-10" Y="-10" Z="-10"></Position>
+                <Size X="20" Y="20" Z="20" />
+            </Box>
+            <Box Material="simple">
+                <Position X="-20" Y="-20" Z="0"></Position>
+                <Size X="40" Y="40" Z="0.01" />
+            </Box>
+
+            <TriangleMesh Material="heli" File="../Meshes/heli.3DS" Scale="0.5">
+            </TriangleMesh>
+        </Shapes>
+
+        <Lights>
+            <AreaLight Intensity="1.5">
+                <Position X="-1" Y="-8" Z="6" />
+                <Size X="2" Y="2" Z="1" />
+                <Color R="1" G="1" B="1" />
+            </AreaLight>
+
+        </Lights>
+
+    </Scene>
+</LyraeDesc>
